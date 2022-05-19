@@ -1,6 +1,4 @@
-from copyreg import constructor
-from email import header
-from locust import HttpUser, task,TaskSet,between
+from locust import HttpUser, task
 import json
 import random
 
