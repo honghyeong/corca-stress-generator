@@ -4,12 +4,11 @@ from locust import HttpUser, task,TaskSet,between
 import json
 import random
 
-class PerformanceTest(HttpUser):
-
+class SimpleJoinTest(HttpUser):
 
 
   @task(4)
-  def bid_call(self):
+  def bid_only_call(self):
     a=random.randint(0,1000000)
     self.client.post('/bid',headers={"Content-Type":"application/vnd.kafka.json.v2+json"},json={
       "records":[
@@ -28,7 +27,7 @@ class PerformanceTest(HttpUser):
 
 
   @task(1)
-  def win_call(self):
+  def win_bid_call(self):
     a=random.randint(0,1000000)
 
     self.client.post('/bid',headers={"Content-Type":"application/vnd.kafka.json.v2+json"},json={
