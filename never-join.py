@@ -7,7 +7,7 @@ class NeverJoinTest(HttpUser):
 
   @task
   def win_bid_call(self):
-    a=random.randint(0,1000000)
+    a=time.time()
 
     self.client.post('/bid',headers={"Content-Type":"application/vnd.kafka.json.v2+json"},json={
       "records":[

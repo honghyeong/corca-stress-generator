@@ -1,13 +1,14 @@
 from locust import HttpUser, task
 import json
 import random
+import time
 
 class SimpleJoinTest(HttpUser):
 
 
   @task(4)
   def bid_only_call(self):
-    a=random.randint(0,1000000)
+    a=time.time()
     self.client.post('/bid',headers={"Content-Type":"application/vnd.kafka.json.v2+json"},json={
       "records":[
         {
@@ -26,7 +27,7 @@ class SimpleJoinTest(HttpUser):
 
   @task(1)
   def win_bid_call(self):
-    a=random.randint(0,1000000)
+    a=time.time()
 
     self.client.post('/bid',headers={"Content-Type":"application/vnd.kafka.json.v2+json"},json={
       "records":[

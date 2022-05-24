@@ -4,10 +4,9 @@ import json
 import random
 
 class RealisticTimeTest(HttpUser):
-
     @task(20)
     def bid_only_call(self):
-        a=random.randint(0,1000000)
+        a=time.time()
         self.client.post('/bid',headers={"Content-Type":"application/vnd.kafka.json.v2+json"},json={
         "records":[
             {
@@ -26,7 +25,7 @@ class RealisticTimeTest(HttpUser):
 
     @task(5)
     def short_win_bid_call(self):
-        a=random.randint(0,1000000)
+        a=time.time()
         slept_time=random.randint(0,5)
         
         self.client.post('/bid',headers={"Content-Type":"application/vnd.kafka.json.v2+json"},json={
@@ -61,7 +60,7 @@ class RealisticTimeTest(HttpUser):
 
     @task(2)
     def long_win_bid_call(self):
-        a=random.randint(0,1000000)
+        a=time.time()
         slept_time=random.randint(30,59)
         
         self.client.post('/bid',headers={"Content-Type":"application/vnd.kafka.json.v2+json"},json={
@@ -94,7 +93,7 @@ class RealisticTimeTest(HttpUser):
 
     @task(1)
     def super_long_win_bid_call(self):
-        a=random.randint(0,1000000)
+        a=time.time()
         slept_time=random.randint(60,70)
         
         self.client.post('/bid',headers={"Content-Type":"application/vnd.kafka.json.v2+json"},json={

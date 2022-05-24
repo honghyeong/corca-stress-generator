@@ -7,7 +7,7 @@ class AllJoinTest(HttpUser):
 
     @task
     def win_bid_call(self):
-        a=random.randint(0,1000000)
+        a=time.time()
         slept_time=random.randint(5,30)
         
         self.client.post('/bid',headers={"Content-Type":"application/vnd.kafka.json.v2+json"},json={
